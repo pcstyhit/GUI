@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 /**
- * 如何在vue3.0项目中集成Element-plus
+ * 如何在vue3.0项目�?集成Element-plus
  * https://blog.csdn.net/weixin_47450807/article/details/123262703
  */
 import ElementPlus from 'element-plus'
