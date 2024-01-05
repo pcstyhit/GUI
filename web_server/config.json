@@ -1,0 +1,8 @@
+{
+  "project_path": "",
+  "log_path": "logs",
+  "cert_path": "cert",
+  "example_path": "example",
+  "example_dependencies_path": "example/js",
+  "default_port": 5101
+}

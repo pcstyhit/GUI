@@ -43,7 +43,8 @@ export default {
     async sendContent() {
       var msg = this.inputText;
       this.inputText = "";
-      await postChatMsg(msg);
+      var res = await postChatMsg(msg);
+      console.log(res,'xxx')
       
     },
   },

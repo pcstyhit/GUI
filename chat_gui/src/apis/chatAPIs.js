@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PORT = 8080;
+const PORT = 5001;
 const URL = `http://192.168.240.131:${PORT}`;
 
 export async function postChatMsg(msg) {

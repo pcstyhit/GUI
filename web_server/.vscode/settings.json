@@ -1,0 +1,33 @@
+{
+  // Set Pylanc python grammar check type mode is easy.
+  "python.analysis.typeCheckingMode": "off",
+  /*
+   * These settings are for the vscode
+   */
+  // Set vscode doesnt need to display files type.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.gitkeep": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true
+  },
+  // Set vscode
+  "search.exclude": {
+    "cert": true,
+    "logs": true,
+    "example/js": true
+  },
+  // The format python document plugins.
+  "[python]": {
+    // You should install autopep8 in your vscode.
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none",
+  // Set up automatic formatting when documents are saved
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true
+}

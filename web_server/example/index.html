@@ -1,0 +1,108 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Hello</title>
+</head>
+
+<body>
+  <input type="button" value="get请求" class="getfun" />
+  <input type="button" value="post请求" class="postfun" />
+  <input type="button" value="下载文件" class="downloadFile" />
+  <div id="websocketTxt"></div>
+  <!-- 官网提供的 axios 在线地址 -->
+  <!-- <script type="text/javascript" src="axios.min.js"></script> -->
+  <!-- <script type="text/javascript" src="socket.io.js"></script> -->
+  <script>
+    // 测试get请求
+    // document.querySelector(".getfun").onclick = function () {
+    //   axios.get("/gethello/lelle/ddd").then(
+    //     function (response) {
+    //       alert(response.data.data);
+    //       console.log(response.data);
+    //     },
+    //     function (err) {
+    //       console.log(err);
+    //     }
+    //   );
+    // };
+
+    // 测试post请求
+    // document.querySelector(".postfun").onclick = function () {
+    //   axios.post("/posthello/hhi").then(
+    //     function (response) {
+    //       alert(response.data.data);
+    //       console.log(response.data);
+    //     },
+    //     function (err) {
+    //       console.log(err);
+    //     }
+    //   );
+    // };
+    // 测试download请求
+    // document.querySelector(".downloadFile").onclick = function () {
+    //   axios.get("/download").then(
+    //     function (response) {
+    //       const blob = new Blob([response.data], { type: "text/plain" });
+    //       //将请求的blob数据转为可下载的url地址
+    //       let url = URL.createObjectURL(blob);
+
+    //       // 创建一个下载标签<a>
+    //       const aLink = document.createElement("a");
+    //       aLink.href = url;
+
+    //       // 2.直接使用自定义文件名,设置下载文件名称
+    //       var date = new Date()
+    //       var flieName = date.getHours()+ '-' + date.getMinutes() + '-' + date.getSeconds()+'.txt'
+    //       aLink.setAttribute("download", flieName);
+    //       document.body.appendChild(aLink);
+
+    //       // 模拟点击下载
+    //       aLink.click();
+
+    //       // 移除改下载标签
+    //       document.body.removeChild(aLink);
+    //     },
+    //     function (err) {
+    //       console.log(err);
+    //     }
+    //   );
+    // };
+
+    // 创建与服务器的WebSocket连接
+    var ws = new WebSocket(`wss://127.0.0.1:10000/dcenter`);
+    const webSocketConnect = () => {
+      const wsClose = () => {
+        ws = null;
+        timer = null;
+      };
+
+      ws.onopen = (e) => {
+        console.log("open");
+        ws.send("hello?");
+        timer = setInterval(() => {
+          ws.send("hello?");
+        }, 1000);
+      };
+
+      ws.onmessage = (evt) => {
+        console.log("onmessage", JSON.parse(evt.data));
+      };
+
+      ws.onclose = (e) => {
+        console.log("onclose", e);
+
+        wsClose();
+      };
+
+      ws.onerror = (e) => {
+        console.log("onerror", e);
+
+        wsClose();
+      };
+
+      ws = null;
+    };
+    webSocketConnect();
+  </script>
+</body>
