@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import make_response, send_from_directory
 from flask_restful import Resource, Api, request
 
+from scripts.libs import CONFIGS
 
 class HttpProxy(Resource):
     def writeTime(self, parm):
